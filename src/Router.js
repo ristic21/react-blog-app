@@ -1,6 +1,7 @@
 import { Route, Switch, Redirect } from "react-router-dom";
-
+import SinglePost from "./pages/SinglePost";
 import { AppPosts } from "./pages/AppPosts";
+import AddPost from "./pages/AddPost";
 
 const Router = () => {
   return (
@@ -9,7 +10,9 @@ const Router = () => {
       <Route exact path="/">
             <Redirect to="/posts" />
         </Route>
-        <Route path="/posts" component={AppPosts} />
+        <Route exact path="/posts" component={AppPosts} />
+        <Route path="/posts/:id" component={SinglePost} />
+        <Route path="/add" component={AddPost} />
       </Switch>
     </div>
   );

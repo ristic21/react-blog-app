@@ -13,7 +13,32 @@ getAll = async () => {
     } catch (error) {
       throw new Error(error);
     }
+
   };
+
+
+  async get(id) {
+    try {
+      const { data } = await this.axios.get(`posts/${id}`);
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+
+  }
+
+  async add(newPost) {
+    try {
+      const { data } = await this.axios.post('posts', newPost);
+
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+
+    return null;
+  }
+
 }
 
 export const postsService = new PostsService();
