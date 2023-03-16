@@ -48,6 +48,15 @@ class PostsService {
     }
   }
 
+  async delete(postId) {
+    try {
+      const { data } = await this.axios.delete(`posts/${postId}`);
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
 }
 
 export const postsService = new PostsService();

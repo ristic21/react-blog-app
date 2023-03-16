@@ -11,6 +11,15 @@ export const AppPosts = () => {
     // console.log(posts)
   }
 
+  const handleDelete = async (postId) => {
+
+    const data = await postsService.delete(postId);
+
+    if (data.count > 0) {
+      setPosts(posts.filter((post) => post.id !== postId));
+    }
+  };
+
   useEffect(() => {
     handleGetPosts()
   }, []);
@@ -19,7 +28,7 @@ export const AppPosts = () => {
     <div>
       <p className="display-6">Posts list</p>
       <hr />
-      <PostsList posts={posts} setPosts={setPosts} />
+      <PostsList posts={posts} setPosts={setPosts} handleDelete={handleDelete} />
     </div>
   );
 };
