@@ -3,11 +3,11 @@ import httpService from "./httpService";
 
 class PostsService {
 
-    constructor() {
-        this.axios = httpService.axiosInstance;
-      }
+  constructor() {
+    this.axios = httpService.axiosInstance;
+  }
 
-getAll = async () => {
+  getAll = async () => {
     try {
       return this.posts = await this.axios.get("/posts");
     } catch (error) {
@@ -37,6 +37,15 @@ getAll = async () => {
     }
 
     return null;
+  }
+
+  async edit(id, newPost) {
+    try {
+      const { data } = await this.axios.put(`posts/${id}`, newPost);
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
   }
 
 }

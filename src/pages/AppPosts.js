@@ -15,10 +15,11 @@ export const AppPosts = () => {
     handleGetPosts()
   }, []);
 
-    return (
-      <div>
-        <h3>Posts stranica</h3>
-         <PostsList posts={posts} setPosts={setPosts} />
-      </div>
-    );
-  };
+  return (
+    <div>
+      <p className="display-6">Posts list</p>
+      <hr />
+      <PostsList posts={posts} setPosts={setPosts} />
+    </div>
+  );
+};

@@ -9,22 +9,21 @@ export function PostsList({ posts, setPosts }) {
 
   return (
     <div>
-         {posts.map((post) => {
-          return (
+      {posts.map((post) => {
+        return (
           <div key={post.id}>
-            <h1 className="display-6 fst-italic">{post.title}</h1>
-      <p className="lead my-3">{post.text}</p>
-      
-                <br />
-                <Link className="navbar-brand" to={`/posts/${post.id}`}>View post</Link>
-           <hr />
-            </div>
-            )
-            }
-         )}           
+            <p className="h3 fst-italic">{post.title}</p>
+            <p className="lead my-3">{post.text}</p>
+            <Link style={{ padding: 10 }} className="navbar-brand" to={`/posts/${post.id}`}>View post</Link>
+            <Link style={{ padding: 10 }} className="navbar-brand" to={`/edit/${post.id}`}>Edit</Link>
+            <hr />
+          </div>
+        )
+      }
+      )}
     </div>
   )
 }
-     
+
 
 
