@@ -4,11 +4,15 @@ import { PostsList } from "../components/PostsList";
 
 export const AppPosts = () => {
   const [posts, setPosts] = useState([]);
+  const [comments, setComments] = useState([]);
 
   const handleGetPosts = async () => {
     const response = await postsService.getAll()
     setPosts(response.data)
-    // console.log(posts)
+  }
+  const handleGetComments = async (id) => {
+    const response = await postsService.getComments(id)
+    setComments(response.data)
   }
 
   const handleDelete = async (postId) => {
@@ -28,7 +32,7 @@ export const AppPosts = () => {
     <div>
       <p className="display-6">Posts list</p>
       <hr />
-      <PostsList posts={posts} setPosts={setPosts} handleDelete={handleDelete} />
+      <PostsList posts={posts} setPosts={setPosts} handleDelete={handleDelete} handleGetComments={handleGetComments} comments={comments} />
     </div>
   );
 };

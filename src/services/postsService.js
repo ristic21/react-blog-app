@@ -17,9 +17,9 @@ class PostsService {
   };
 
 
-  async get(id) {
+  async get(postId) {
     try {
-      const { data } = await this.axios.get(`posts/${id}`);
+      const { data } = await this.axios.get(`/posts/${postId}?filter={"include":["comments"]}`);
       return data;
     } catch (error) {
       console.log(error);
@@ -56,6 +56,27 @@ class PostsService {
       console.log(error);
     }
   }
+
+  async addComment(newComment, postId) {
+    try {
+      const { data } = await this.axios.post(`/posts/${postId}/comments`, newComment);
+
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+
+    return null;
+  }
+
+  getComments = async (id) => {
+    try {
+      return this.comments = await this.axios.get(`/posts/${id}/comments`);
+    } catch (error) {
+      throw new Error(error);
+    }
+
+  };
 
 }
 
