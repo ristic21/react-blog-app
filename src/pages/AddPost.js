@@ -20,6 +20,7 @@ const AddPost = () => {
     setNewPost({
       title: '',
       text: '',
+      createdAt: new Date()
     });
   };
 

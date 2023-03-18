@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { postsService } from "../services/postsService";
 import { AddComment } from "./AddComment";
+import useFormattedDate from "../hooks/useFormattedDate";
 
 function SinglePostComp({ }) {
   const history = useHistory();
@@ -10,6 +11,7 @@ function SinglePostComp({ }) {
   const [post, setPost] = useState({});
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState({});
+  const formattedDate = useFormattedDate(post.createdAt);
 
   const fetchPost = async () => {
     try {
@@ -56,6 +58,7 @@ function SinglePostComp({ }) {
       >
         <span className="h3">{post?.title}</span>
         <span className="lead my-3">{post?.text}</span>
+        <span className="lead my-3">Created at: {formattedDate}</span>
       </li>
       <AddComment handleSubmit={handleSubmit} newComment={newComment} setNewComment={setNewComment} comments={comments} />
     </div>
